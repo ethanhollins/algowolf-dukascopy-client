@@ -92,9 +92,12 @@ def sendResponse(msg_id, res):
 
 
 def onAddUser(user_id, broker_id, username, password, is_demo, is_parent):
+	print(f'[onAddUser] {broker_id}, {user_container.users}', flush=True)
 	if not broker_id in user_container.users:
+		print(f'[onAddUser] 1', flush=True)
 		user = user_container.addUser(user_id, broker_id, username, password, is_demo, is_parent)
 		user._start_gateway()
+	print(f'[onAddUser] 2', flush=True)	
 	return {
 		'complete': True
 	}
